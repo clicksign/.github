@@ -7,7 +7,7 @@ Revisão dos PRs é tão importante quanto fazer código. Com ela criamos uma co
 
 Importante lembrar que um PR não precisa ser perfeito para ser aceito. Se ele deixa a aplicação num estado melhor do que estava antes consideramos isso um bom PR. Sempre dá para melhorar uma coisa ou outra, mas chega um ponto onde os benefícios de trocar uma variável por outra não compensam o tempo gasto. Lembre que outras pessoas podem tomar decisões diferentes da sua, mas não significa que está errado: não é o objetivo fazer com que todo mundo codifique exatamente do mesmo jeito.
 
-Da mesma forma a pessoa que desenvolveu o PR deve praticar um certo desapego com o código. Code review não é um ataque pessoal, sugestões simples que não afetam o andamento do código podem ser acatadas mesmo que descordemos um pouco.
+Da mesma forma a pessoa que desenvolveu o PR deve praticar um certo desapego com o código. Code review não é um ataque pessoal, sugestões simples que não afetam o andamento do código podem ser acatadas mesmo que discordemos um pouco.
 
 O revisor deve sempre tentar embasar a razão para qual está pedindo uma mudança num PR e dar sugestões para possíveis modificações. Quando não temos um feedback construtivo podemos ficar frustrados. Por exemplo, não escreva somente "Mude o nome desse método, não está bom", mas escreva "O nome do método poderia ser mais descritivo, que tal chamar de `novo_nome_mais_descritivo`?". Também adicione algum link ou outros exemplo de código para explicar porque acha melhor a modificação, isso faz com que o revisor tenha que pesquisar a razão para modificação e com que a pessoa que desenvolveu o PR aprenda com essa pesquisa. Ganhamos dos dois lados.
 
