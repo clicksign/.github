@@ -6,6 +6,12 @@
 
 \[Link para o card no Kanbanize.\]
 
+### Code Review
+
+Como fazer o Code Review:
+
+[CONTRIBUTING.md](https://github.com/clicksign/.github/blob/8d623c886c2da0266d108d5fa21cf01a1c82cbc0/CONTRIBUTING.md)
+
 ### Screenshots (para mudanças de UI, se houver)
 
 \[Adicione alguns screenshots das mudanças de UI inclusas no seu PR, se houver. Isso ajuda o revisor a entender como o usuário utilizaria o código do PR.\]
