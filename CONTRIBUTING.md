@@ -36,7 +36,7 @@ Para que o processo de code review e merge seja o mais eficiente possível, temo
 
 ### Tamanho
 
-Tente fazer com que seu PR seja pequeno o suficiente para facilitar o code review, mas grande o suficiente para que seja coerente. O tamanho do PR é algo subjetivo, mas o que não queremos são: PRs muito grandes onde o revisor desiste de revisar por demorar muito tempo; PRs muito pequenos onde ele depende de outros 3 PRs para comprir com o seu objetio.
+Tente fazer com que seu PR seja pequeno o suficiente para facilitar o code review, mas grande o suficiente para que seja coerente. O tamanho do PR é algo subjetivo, mas o que não queremos são: PRs muito grandes onde o revisor desiste de revisar por demorar muito tempo; PRs muito pequenos onde ele depende de outros 3 PRs para comprir com o seu objetivo.
 
 Não tem problema o PR entregar somente parte de uma funcionalidade. Por exemplo: uma refatoração onde adicionamos uma nova classe pode começar por ser usada em uma parte da aplicação, e depois em outro PR usamos essa nova classe em outra parte. O importante é que o PR seja auto-contido.
 
