@@ -64,7 +64,24 @@ Nomes dos branches devem ser sempre em *inglês*. Usamos 4 tipos de branches com
 * **Release**: abertura de branch release. Convenção: `release/v1.1.1`
 * **Feature**: resto dos casos. Convenção: `feature/{card number}`
 
-O `{card number}` é o número do card proveniente do Kanbanize, com o prefixo `KZ`. por exemplo: `feature/KZ12345`.
+O `{card number}` é o número do card proveniente do Kanbanize, com o prefixo `kz`, por exemplo: `feature/kz12345`.
+
+#### Convenção de commits
+
+- Commits em pt-BR
+- Commits no imperativo e presente
+- Capitalizar primeiro caractere
+- Manter commit coerente ao contexto do bloco commitado
+- Manter boa descrição dos commits
+
+Exemplos de commit:
+**"Adiciona nova função para deletar signatário do documento"**
+
+### Fluxo de revisão
+
+- PRs Front pelo menos 2 aprovações para seguir com o merge
+- PRs Back pelo menos 2 aprovações para seguir com o merge
+- PRs que envolvam back e front pelo menos 4 aprovações para seguir com o merge, sendo 2 de back-end e 2 de front-end
 
 ### Tags
 
