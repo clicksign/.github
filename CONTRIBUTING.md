@@ -47,6 +47,10 @@ Existe algumas exceções, por exemplo quando modificamos vários arquivos ao me
 ### Regras
 
 * PRs são abertos com base no branch `main` (salvo raras exceções)
+* Não removemos coluna no banco de dados na mesma migração que removemos o código (salvo raras exceções)
+  * Isso permite que seja feito rollback da release em um eventual problema de sustentação
+* Não manipulamos registros do banco de dados em migrações, utilize tasks para esses cenários
+  * Após a conclusão da abordagem crie um novo PR para excluir a task
 * PRs sempre em português, tanto o título quanto descrição
 * O PR deve ter no nome o card que ele resolve em colchetes no título: `[KZ12345] Refatoração da funcionalidade XXX`
 * Coloque um título descritivo no PR, mas não muito longo. Esse título poderá ser utilizado para gerar o Changelog, então é importante que seja legível e compreensível só de bater o olho
