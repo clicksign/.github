@@ -36,7 +36,7 @@ Para que o processo de code review e merge seja o mais eficiente possível, temo
 
 ### Tamanho
 
-Tente fazer com que seu PR seja pequeno o suficiente para facilitar o code review, mas grande o suficiente para que seja coerente. O tamanho do PR é algo subjetivo, mas o que não queremos são: PRs muito grandes onde o revisor desiste de revisar por demorar muito tempo; PRs muito pequenos onde ele depende de outros 3 PRs para comprir com o seu objetio.
+Tente fazer com que seu PR seja pequeno o suficiente para facilitar o code review, mas grande o suficiente para que seja coerente. O tamanho do PR é algo subjetivo, mas o que não queremos são: PRs muito grandes onde o revisor desiste de revisar por demorar muito tempo; PRs muito pequenos onde ele depende de outros 3 PRs para comprir com o seu objetivo.
 
 Não tem problema o PR entregar somente parte de uma funcionalidade. Por exemplo: uma refatoração onde adicionamos uma nova classe pode começar por ser usada em uma parte da aplicação, e depois em outro PR usamos essa nova classe em outra parte. O importante é que o PR seja auto-contido.
 
@@ -47,6 +47,10 @@ Existe algumas exceções, por exemplo quando modificamos vários arquivos ao me
 ### Regras
 
 * PRs são abertos com base no branch `main` (salvo raras exceções)
+* Não removemos coluna no banco de dados na mesma migração que removemos o código (salvo raras exceções)
+  * Isso permite que seja feito rollback da release em um eventual problema de sustentação
+* Não manipulamos registros do banco de dados em migrações, utilize tasks para esses cenários
+  * Após a conclusão da abordagem crie um novo PR para excluir a task
 * PRs sempre em português, tanto o título quanto descrição
 * O PR deve ter no nome o card que ele resolve em colchetes no título: `[KZ12345] Refatoração da funcionalidade XXX`
 * Coloque um título descritivo no PR, mas não muito longo. Esse título poderá ser utilizado para gerar o Changelog, então é importante que seja legível e compreensível só de bater o olho
@@ -64,7 +68,24 @@ Nomes dos branches devem ser sempre em *inglês*. Usamos 4 tipos de branches com
 * **Release**: abertura de branch release. Convenção: `release/v1.1.1`
 * **Feature**: resto dos casos. Convenção: `feature/{card number}`
 
-O `{card number}` é o número do card proveniente do Kanbanize, com o prefixo `KZ`. por exemplo: `feature/KZ12345`.
+O `{card number}` é o número do card proveniente do Kanbanize, com o prefixo `kz`, por exemplo: `feature/kz12345`.
+
+#### Convenção de commits
+
+- Commits em pt-BR
+- Commits no imperativo e presente
+- Capitalizar primeiro caractere
+- Manter commit coerente ao contexto do bloco commitado
+- Manter boa descrição dos commits
+
+Exemplos de commit:
+**"Adiciona nova função para deletar signatário do documento"**
+
+### Fluxo de revisão
+
+- PRs Front pelo menos 2 aprovações para seguir com o merge
+- PRs Back pelo menos 2 aprovações para seguir com o merge
+- PRs que envolvam back e front pelo menos 4 aprovações para seguir com o merge, sendo 2 de back-end e 2 de front-end
 
 ### Tags
 
