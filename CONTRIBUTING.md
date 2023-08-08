@@ -87,6 +87,7 @@ Exemplos de commit:
 - PRs Front pelo menos 2 aprovações para seguir com o merge
 - PRs Back pelo menos 2 aprovações para seguir com o merge
 - PRs que envolvam back e front pelo menos 4 aprovações para seguir com o merge, sendo 2 de back-end e 2 de front-end
+- PRs que contenham inserção, alteração ou remoção de testes automatizados pelo menos 1 aprovação de QA para seguir com o merge. Caso seja um PR inteiramente de testes funcionais automatizados deve ter pelo menos 2 aprovações de QA
 
 ### Tags
 
