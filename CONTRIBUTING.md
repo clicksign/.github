@@ -15,8 +15,11 @@ O revisor deve sempre tentar embasar a razão para qual está pedindo uma mudan�
 
 ### O que olhar
 
+Ao realizar revisões de código, é essencial manter um equilíbrio entre a compreensão das regras de negócios e a avaliação dos aspectos técnicos listados abaixo. Se você não está familiarizado com as regras de negócios implementadas, concentre-se em outros aspectos igualmente importantes do processo de revisão de código. Isso ajudará a garantir que as revisões sejam valiosas, independentemente de sermos ou não parte do mesmo território.
+
+* **Qualidade**: Avalie a legibilidade, clareza e coesão do código. Verifique se as variáveis, funções e classes têm nomes descritivos e significativos.
 * **Testes**: o código novo tem testes? Se está alterando um código já existe, os testes atuais cobrem os novos casos?
-* **Funcionalidade**: o código faz o que o autor pretende? As vezes a regra de negócio tem algumas complicações a mais que não sabíamos quando escrevemos o código
+* **Funcionalidade**: o código faz o que o autor pretende? As vezes a regra de negócio tem algumas complicações a mais que não sabíamos quando escrevemos o código (Se estiver familiarizado com as regras)
 * **Design**: o código tem um bom design? Isso é, o código é bem escrito e integra bem com o resto da base? Os nomes das classes fazem sentido para o nosso domínio? Talvez exista uma parte do código que já faça algo similar e esse novo código poderia contemplar ela?
 
 Nem todos PRs terão todos esses seguintes problemas, mas também devemos ver:
