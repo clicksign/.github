@@ -15,8 +15,11 @@ O revisor deve sempre tentar embasar a razão para qual está pedindo uma mudan�
 
 ### O que olhar
 
+Ao realizar revisões de código, é essencial manter um equilíbrio entre a compreensão das regras de negócios e a avaliação dos aspectos técnicos listados abaixo. Se você não está familiarizado com as regras de negócios implementadas, concentre-se em outros aspectos igualmente importantes do processo de revisão de código. Isso ajudará a garantir que as revisões sejam valiosas, independentemente de sermos ou não parte do mesmo território.
+
+* **Qualidade**: Avalie a legibilidade, clareza e coesão do código. Verifique se as variáveis, funções e classes têm nomes descritivos e significativos.
 * **Testes**: o código novo tem testes? Se está alterando um código já existe, os testes atuais cobrem os novos casos?
-* **Funcionalidade**: o código faz o que o autor pretende? As vezes a regra de negócio tem algumas complicações a mais que não sabíamos quando escrevemos o código
+* **Funcionalidade**: o código faz o que o autor pretende? As vezes a regra de negócio tem algumas complicações a mais que não sabíamos quando escrevemos o código (Se estiver familiarizado com as regras)
 * **Design**: o código tem um bom design? Isso é, o código é bem escrito e integra bem com o resto da base? Os nomes das classes fazem sentido para o nosso domínio? Talvez exista uma parte do código que já faça algo similar e esse novo código poderia contemplar ela?
 
 Nem todos PRs terão todos esses seguintes problemas, mas também devemos ver:
@@ -51,6 +54,7 @@ Existe algumas exceções, por exemplo quando modificamos vários arquivos ao me
   * Isso permite que seja feito rollback da release em um eventual problema de sustentação
 * Não manipulamos registros do banco de dados em migrações, utilize tasks para esses cenários
   * Após a conclusão da abordagem crie um novo PR para excluir a task
+* Evitamos ao máximo alterar qualquer data-testid de componente, e nunca removemos data-testids. Esse atributo é utilizado para a identificação única do componente nos testes automatizados e qualquer alteração nele deverá refletir em ajustes nos testes que o utilizam 
 * PRs sempre em português, tanto o título quanto descrição
 * O PR deve ter no nome o card que ele resolve em colchetes no título: `[KZ12345] Refatoração da funcionalidade XXX`
 * Coloque um título descritivo no PR, mas não muito longo. Esse título poderá ser utilizado para gerar o Changelog, então é importante que seja legível e compreensível só de bater o olho
@@ -86,6 +90,7 @@ Exemplos de commit:
 - PRs Front pelo menos 2 aprovações para seguir com o merge
 - PRs Back pelo menos 2 aprovações para seguir com o merge
 - PRs que envolvam back e front pelo menos 4 aprovações para seguir com o merge, sendo 2 de back-end e 2 de front-end
+- PRs que contenham inserção, alteração ou remoção de testes automatizados pelo menos 1 aprovação de QA para seguir com o merge. Caso seja um PR inteiramente de testes funcionais automatizados deve ter pelo menos 2 aprovações de QA
 
 ### Tags
 
