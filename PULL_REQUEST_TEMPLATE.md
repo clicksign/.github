@@ -4,7 +4,7 @@
 
 ### Issue tracker
 
-\[Link para o card no Kanbanize.\]
+\[Link para o card no Jira.\]
 
 ### Code Review
 
