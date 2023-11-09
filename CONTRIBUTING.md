@@ -56,7 +56,7 @@ Existe algumas exceções, por exemplo quando modificamos vários arquivos ao me
   * Após a conclusão da abordagem crie um novo PR para excluir a task
 * Evitamos ao máximo alterar qualquer data-testid de componente, e nunca removemos data-testids. Esse atributo é utilizado para a identificação única do componente nos testes automatizados e qualquer alteração nele deverá refletir em ajustes nos testes que o utilizam 
 * PRs sempre em português, tanto o título quanto descrição
-* O PR deve ter no nome o card que ele resolve em colchetes no título: `[KZ12345] Refatoração da funcionalidade XXX`
+* O PR deve ter no nome o card que ele resolve em colchetes no título: `[JR-COB-112] Refatoração da funcionalidade XXX`
 * Coloque um título descritivo no PR, mas não muito longo. Esse título poderá ser utilizado para gerar o Changelog, então é importante que seja legível e compreensível só de bater o olho
 * Garanta que os commits no PR são somente os necessários, e resolva qualquer problema de rebase (por exemplo, commits a mais que você não escreveu) antes de pedir review
 * Se o PR ainda está em criação, deixe-o como *Draft*
@@ -72,7 +72,7 @@ Nomes dos branches devem ser sempre em *inglês*. Usamos 4 tipos de branches com
 * **Release**: abertura de branch release. Convenção: `release/v1.1.1`
 * **Feature**: resto dos casos. Convenção: `feature/{card number}`
 
-O `{card number}` é o número do card proveniente do Kanbanize, com o prefixo `kz`, por exemplo: `feature/kz12345`.
+O `{card number}` é o número do card proveniente do Jira, com o prefixo `JR` seguido da abreviação do nome do território, por exemplo: `feature/JR-COB-112`.
 
 #### Convenção de commits
 
