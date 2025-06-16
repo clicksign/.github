@@ -1,3 +1,7 @@
+### Importante
+Caso precise isolar o **pr** em uma release separada, favor incluir na descrição a informação [rls_isolada]
+ex:  [ARCH-123][**rls_isolada**]Atualização de Excalibur
+
 ### Descrição
 
 \[Descreva o problema ou card resumidamente. Depois descreva a solução técnica para esse problema, focando no *como* e no *por que* a sua solução foi feita dessa forma. A ideia é ajudar o revisor do código a entendê-lo de forma geral e poder analisar o código já com algum contexto.\]
@@ -19,6 +23,9 @@ Como fazer o Code Review:
 ### Links e observações
 
 \[Links úteis que podem contextualizar e ajudar o revisor, por exemplo para a página de uma dependência que escolheu adicionar, ou um código que se inspirou, ou documentação externa (docs de uma API, do Vue, do Rails, etc).\]
+
+- Dúvidas sobre isolar pr consulte - https://clicksign.atlassian.net/wiki/spaces/KBTech/pages/765952001/Classificar+Release+Isolada
+
 
 ### Checklist para poder mergear
 
