@@ -1,5 +1,5 @@
 ### Importante
-Caso precise isolar o **pr** em uma release separada, favor incluir na descrição a informação [rls_isolada]
+Caso precise isolar o **pr** em uma release separada, favor incluir no titulo do PR a informação [rls_isolada]
 ex:  [ARCH-123][**rls_isolada**]Atualização de Excalibur
 
 ### Descrição
