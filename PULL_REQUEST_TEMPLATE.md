@@ -24,7 +24,7 @@ ex:  [ARCH-123][**rls_isolada**]Atualização de Excalibur
  
 > **Instruções:** Marque cada item após validá-lo de fato. Itens que não se aplicam a este PR devem ser marcados com `~N/A~`
 > Este checklist é um **pré-requisito** para solicitar review. PRs com checklist vazio poderão ter a revisão adiada até que o autor valide os pontos.
- [Guia do Checklist.](https://github.com/clicksign/.github/blob/feature/JR-QE-908/PULL_REQUEST_GUIDE.md)
+> [Guia do Checklist.](https://github.com/clicksign/.github/blob/feature/JR-QE-908/PULL_REQUEST_GUIDE.md)
 ### Recursos AWS (SQS, BD, Dynamo, etc.)
 - [ ] **Provisionamento:** As filas, tabelas ou recursos necessários já existem ou foram criados?
 - [ ] **Acessos:** As permissões necessárias já foram habilitadas para o recurso selecionado?
