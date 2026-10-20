@@ -125,6 +125,10 @@ Exemplos: `featur/QE-785`, `featur/CPT-600-cpf-validation`, `featur/CPT-600-sign
 - Sem hífens consecutivos (`--`)
 - A descrição não começa nem termina com `-`
 - `.` só é permitido na versão de release (`releas/v1.4.2`)
+- PRs Front pelo menos 2 aprovações para seguir com o merge
+- PRs Back pelo menos 2 aprovações para seguir com o merge
+- PRs que envolvam back e front pelo menos 4 aprovações para seguir com o merge, sendo 2 de back-end e 2 de front-end
+- PRs que contenham inserção, alteração ou remoção de testes automatizados pelo menos 1 aprovação de QA para seguir com o merge.
 
 | Prefixo | Padrão | PR aberto contra |
 |---|---|---|
