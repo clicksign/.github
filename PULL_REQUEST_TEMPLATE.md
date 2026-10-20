@@ -1,34 +1,69 @@
-### Importante
-Caso precise isolar o **pr** em uma release separada, favor incluir no titulo do PR a informação [rls_isolada]
-ex:  [ARCH-123][**rls_isolada**]Atualização de Excalibur
-
 ### Descrição
 
-\[Descreva o problema ou card resumidamente. Depois descreva a solução técnica para esse problema, focando no *como* e no *por que* a sua solução foi feita dessa forma. A ideia é ajudar o revisor do código a entendê-lo de forma geral e poder analisar o código já com algum contexto.\]
+<frase de abertura: 1–2 linhas resumindo o objetivo do PR e o problema que ele resolve>
+
+#### O que foi alterado
+
+- **<Área 1>**: <o que mudou nessa camada>
+- **<Área 2>**: <o que mudou nessa camada>
+
+#### Por que
+
+<motivação, dor, contexto de negócio>
+
+#### Como
+
+<fluxo da implementação, decisões técnicas, trade-offs>
+
+#### Antes / Depois
+
+<!-- Incluir APENAS quando houver mudança de payload, contrato de API, estado, enum ou rota.
+     Omitir completamente nos demais casos. -->
+
+**Antes**
+```json
+...
+```
+
+**Depois**
+```json
+...
+```
+
+---
+
+### Testes
+
+- **O que foi testado**: <cenários validados, incluindo casos de borda e negativos>
+- **Tipos de testes no PR**: <unitário, integração, request/e2e, etc.>
+
+---
+
+### Evidências
+
+<!-- Anexe aqui um print ou GIF da correção/funcionalidade funcionando.
+     Para mudanças sem impacto visual, cole a saída relevante (log, resposta da API, execução dos testes). -->
+
+---
 
 ### Issue tracker
 
-\[Link para o card no Jira.\]
+[Link para o card no Jira.](https://clicksign.atlassian.net/browse/{JIRA-CODE})
+
+---
 
 ### Code Review
 
-Como fazer o Code Review:
+Como fazer o Code Review: [CONTRIBUTING.md](https://github.com/clicksign/.github/blob/main/CONTRIBUTING.md)
 
-[CONTRIBUTING.md](https://github.com/clicksign/.github/blob/8d623c886c2da0266d108d5fa21cf01a1c82cbc0/CONTRIBUTING.md)
-
-### Screenshots (para mudanças de UI, se houver)
-
-\[Adicione alguns screenshots das mudanças de UI inclusas no seu PR, se houver. Isso ajuda o revisor a entender como o usuário utilizaria o código do PR.\]
-
-### Links e observações
-
-\[Links úteis que podem contextualizar e ajudar o revisor, por exemplo para a página de uma dependência que escolheu adicionar, ou um código que se inspirou, ou documentação externa (docs de uma API, do Vue, do Rails, etc).\]
-
-- Dúvidas sobre isolar pr consulte - https://clicksign.atlassian.net/wiki/spaces/KBTech/pages/765952001/Classificar+Release+Isolada
-
+---
 
 ### Checklist para poder mergear
 
+- [ ] O título segue o padrão `[ISSUE] (tipo) Mensagem`
 - [ ] O código do PR inclui (ou já possui) testes para o código nele
+- [ ] Nomes de arquivos seguem a [convenção do repositório](../CONTRIBUTING.md#convenção-de-nomes-de-arquivos)
 - [ ] Os checks de linters estão passando
 - [ ] Os checks de testes estão passando
+- [ ] Evidências anexadas (quando houver mudança visível)
+- [ ] Descrição ou código gerado com IA (se marcado, adicionar a tag `ai-generated`)
