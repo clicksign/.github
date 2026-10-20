@@ -190,6 +190,26 @@ O PR de uma PoC (`experi/ISSUE`) permanece como *Draft* durante toda a sua vida 
 - Se o autor abriu um PR com os checks passando e pronto para review, adicione a tag `ready to review`
 - Se o PR foi aprovado pelo número necessário de pessoas e está pronto para ser mergeado, adicione a tag `ready to merge`
 
+
+## Convenções de nomes de arquivos
+
+| Convenção | Exemplo | Onde é o padrão | Arquivos típicos |
+|---|---|---|---|
+| **kebab-case** | `pull-request-template.md` | Docs, web/front-end, URLs, CSS, configs, maioria dos projetos JS/TS | `user-profile.css`, `api-client.ts`, `getting-started.md`, `docker-compose.yml`, `plano-de-teste-login.md`, `login.cy.ts` |
+| **snake_case** | `pull_request_template.md` | Python (PEP 8), Ruby/Rails, Go, SQL, Elixir. Templates do GitHub | `user_service.py`, `users_controller.rb`, `user_spec.rb`, `test_login.py`, `http_client.go`, `20261020_create_users.sql`, `.github/pull_request_template.md` |
+| **camelCase** | `pullRequestTemplate.md` | Alguns arquivos JS/TS (hooks, utils, stores). Raro como padrão geral | `useAuth.ts`, `formatDate.js`, `authStore.ts`, `apiClient.js` |
+| **PascalCase** | `PullRequestTemplate.vue` | Componentes Vue/React, classes Java/C#/Kotlin/Swift | `UserCard.vue`, `LoginForm.tsx`, `UserService.java`, `LoginPage.ts` (Page Object), `Program.cs` |
+| **UPPER_CASE** | `README.md` | Arquivos "meta" do repositório e arquivos exigidos por ferramentas | `README.md`, `CONTRIBUTING.md`, `CHANGELOG.md`, `LICENSE`, `CODEOWNERS`, `.github/PULL_REQUEST_TEMPLATE.md` |
+| **Nome fixo** | `Dockerfile` | Arquivos que a ferramenta procura pelo nome exato | `Dockerfile`, `Makefile`, `Gemfile`, `Rakefile`, `package.json`, `.gitlab-ci.yml`, `playwright.config.ts`, `cypress.config.js` |
+
+> **Observação sobre `.github/`:** o GitHub aceita `pull_request_template.md` e `PULL_REQUEST_TEMPLATE.md` (não diferencia maiúsculas e minúsculas), mas **não** reconhece kebab-case nem camelCase. Os arquivos de workflow em `.github/workflows/` costumam usar kebab-case (`ci.yml`, `deploy-staging.yml`).
+
+### Regras práticas de nomes de arquivos
+
+1. **Arquivos com nome exigido por ferramenta:** use exatamente o nome esperado.
+2. **Código:** siga a convenção da linguagem ou framework do repositório.
+3. **Docs e arquivos soltos:** prefira **kebab-case**.
+4. **Consistência acima de tudo:** não misture convenções dentro do mesmo repositório.
 ---
 
 ## Bibliografia
