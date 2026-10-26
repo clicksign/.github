@@ -56,38 +56,45 @@ Existem exceções, como alterações em vários arquivos ao mesmo tempo para co
 - PRs são abertos com base na `main`. A única exceção são os hotfixes, que seguem o fluxo de release (veja [Hotfix](#hotfix))
 - Toda alteração na `main` é feita exclusivamente via PR
 - Todo trabalho tem uma issue no Jira, inclusive ajustes pequenos (typo, dependência). Se ela não existir, crie antes de abrir a branch
-- PRs sempre em português, tanto o título quanto a descrição
+- Todo o conteúdo textual do PR deve ser escrito em português, incluindo título, descrição e comentários
 - O título do PR segue o padrão `[ISSUE] (tipo) Mensagem` (veja [Título do PR](#título-do-pr))
 - O nome da branch segue o padrão `tipo/ISSUE[-descricao]` (veja [Convenção de nomes de branches](#convenção-de-nomes-de-branches))
 - O tamanho do PR respeita os limites da seção [Tamanho](#tamanho)
 - Garanta que os commits no PR são somente os necessários, e resolva qualquer problema de rebase (por exemplo, commits a mais que você não escreveu) antes de pedir review
 - Se o PR ainda está em criação, deixe-o como *Draft* (veja [Trabalho temporário](#trabalho-temporário))
 - A branch é removida automaticamente após o merge (opção *Automatically delete head branches* ativada no repositório)
-- Branches sem atividade há mais de 30 dias são consideradas abandonadas: feche o PR ou retome o trabalho. Elas podem ser removidas sem aviso
+- Branches sem atividade há mais de 30 dias são consideradas abandonadas: feche o PR ou retome o trabalho. Branches sem atividade há mais de 30 dias podem ser removidas sem aviso, exceto main, release/* e branches de PoCs com PR em Draft.
 - PRs só podem ser mergeados se todos os checks estiverem passando. Não podemos mergear PRs "vermelhos"
 - O merge é feito via *squash merge*, usando o título do PR como mensagem do commit. Assim, o histórico da `main` fica com um commit por PR, no padrão `[ISSUE] (tipo) Mensagem`, pronto para gerar o Changelog
+- PRs de Front-end precisam de pelo menos 2 aprovações para seguir com o merge
+- PRs de Back-end precisam de pelo menos 2 aprovações para seguir com o merge
+- PRs que envolvam Back e Front precisam de pelo menos 4 aprovações para seguir com o merge, sendo 2 de Back-end e 2 de Front-end
+- PRs que contenham inserção, alteração ou remoção de testes automatizados precisam de pelo menos 1 aprovação de QA para seguir com o merge
 
-### Códigos de tipo
+### Prefixos de branch
 
-Todo código tem 6 letras minúsculas. O mesmo vocabulário vale para o prefixo da branch e para o `(tipo)` do título do PR.
+O [Conventional Branch](https://conventionalbranch.org/) (v1.1.0) define os prefixos `feature`, `bugfix` e `release`, entre outros. Também usamos `devops`, `experiment` e `toggle` como extensões próprias, que não fazem parte do padrão.
 
-| Código | Significado |
+Embora `feat` e `fix` sejam aliases previstos pelo Conventional Branch, eles não são aceitos neste repositório. Use `feature` para novas funcionalidades e `bugfix` para correções.
+
+| Prefixo | Significado |
 |---|---|
-| `featur` | Nova funcionalidade |
-| `bugfix` | Correção de bug: planejada, hotfix ou sustentação |
-| `experi` | Experimento (sempre atrás de feature toggle e sem passar pelo QA) ou PoC (prova de conceito que não vai para produção e nunca é mergeada) |
-| `devops` | Infra, pipelines e automações |
-| `toggle` | Funcionalidade habilitada via feature toggle |
-| `releas` | Release (apenas prefixo de branch, criada pela pipeline) |
+| `feature` | Nova funcionalidade |
+| `bugfix` | Correção de bug: planejada ou sustentação |
+| `hotfix` | Correção urgente |
+| `chore` | Manutenção sem mudança funcional |
+| `experiment` | Experimento, sempre atrás de feature toggle e sem passar pelo QA |
+| `devops` | Infra, pipelines e automações (extensão própria) |
+| `toggle` | Funcionalidade habilitada via feature toggle (extensão própria) |
+| `release` | Release criada pela pipeline (a única criação manual permitida é para hotfix) |
+| `ai`, `claude`, `codex`, `copilot`, `cursor` | Prefixos de branches de agentes de IA aceitos pelo Conventional Branch |
 
-Qualquer outro código é inválido (`story`, `feat`, `fix`, `hotfix`, `release`, `exp`, `poc`, `spike`, `temp`, `tmp`, `test`, `chore`, `refactor`, `docs`, etc.).
-
-#### Qual tipo usar quando não é óbvio
+#### Qual tipo de PR usar quando não é óbvio
 
 | Trabalho | Tipo |
 |---|---|
-| Refatoração sem mudança de comportamento | `featur` |
-| Apenas testes ou documentação | `featur` |
+| Refatoração sem mudança de comportamento | `feature` |
+| Apenas testes ou documentação | `feature` |
 | Upgrade de dependência | `devops` |
 | Remoção de feature toggle | `toggle` |
 | Hotfix em produção | `bugfix` (contra a release) |
@@ -97,12 +104,12 @@ Qualquer outro código é inválido (`story`, `feat`, `fix`, `hotfix`, `release`
 Formato: `[ISSUE] (tipo) Mensagem`
 
 - **ISSUE**: chave da issue no Jira, em maiúsculas. Ex.: `CPT-600`
-- **tipo**: obrigatório. Um dos códigos da tabela acima, em minúsculas, exceto `releas`
-- **Mensagem**: descrição curta, clara e objetiva, começando com verbo no presente. O título poderá ser usado para gerar o Changelog, então precisa ser legível e compreensível só de bater o olho
+- **tipo**: obrigatório. Um dos prefixos de trabalho listados na [tabela de prefixos de branch](#prefixos-de-branch), em minúsculas.
+- **Mensagem**: descrição curta, clara e objetiva, em português e começando com verbo no presente. O título poderá ser usado para gerar o Changelog, então precisa ser legível e compreensível só de bater o olho
 
 Exemplos:
 
-- `[CPT-600] (featur) Cria checagem de cpfs em pades assinados`
+- `[CPT-600] (feature) Cria checagem de cpfs em pades assinados`
 - `[CPT-600] (bugfix) Corrige validação de CPFs em pades assinados`
 - `[CPT-702] (toggle) Habilita suporte a novos tipos de documentos`
 
@@ -110,13 +117,13 @@ Exemplos:
 
 Formato: `tipo/ISSUE[-descricao]`
 
-- **tipo**: um dos códigos da tabela, em minúsculas
-- **ISSUE**: chave do Jira em maiúsculas, igual ao Jira. Ex.: `QE-785`
-- **descricao** (opcional): poucas palavras em *inglês*, minúsculas, separadas por hífen. Obrigatória quando a mesma issue tiver mais de uma branch
+- **tipo**: um dos prefixos de trabalho listados na [tabela de prefixos de branch](#prefixos-de-branch), em minúsculas.
+- **ISSUE**: chave do Jira em maiúsculas. Ex.: `QE-785`
+- **descrição** (opcional): poucas palavras em *inglês*, minúsculas, separadas por hífen. Obrigatória quando a mesma issue tiver mais de uma branch
 
-Exemplos: `featur/QE-785`, `featur/CPT-600-cpf-validation`, `featur/CPT-600-signed-pades`
+Exemplos: `feature/QE-785`, `feature/CPT-600-cpf-validation`, `feature/CPT-600-signed-pades`
 
-> **Desvio intencional do [Conventional Branch](https://conventionalbranch.org/):** a spec exige tudo em minúsculas. Mantemos a chave do Jira em maiúsculas para que a integração GitHub ↔ Jira vincule a branch à issue. Por isso, nunca crie duas branches que diferem só em maiúsculas/minúsculas.
+> **Desvios intencionais do [Conventional Branch](https://conventionalbranch.org/) (v1.1.0):** `devops`, `experiment` e `toggle` são extensões próprias. A chave do Jira na branch fica em maiúsculas para a integração GitHub ↔ Jira vincular a branch à issue, embora o padrão aceite apenas letras minúsculas nos nomes de branch. Os tipos do título do PR são uma convenção interna independente.
 
 #### Regras de caracteres
 
@@ -124,22 +131,20 @@ Exemplos: `featur/QE-785`, `featur/CPT-600-cpf-validation`, `featur/CPT-600-sign
 - Sem espaços, `_`, acentos ou caracteres especiais
 - Sem hífens consecutivos (`--`)
 - A descrição não começa nem termina com `-`
-- `.` só é permitido na versão de release (`releas/v1.4.2`)
-- PRs Front pelo menos 2 aprovações para seguir com o merge
-- PRs Back pelo menos 2 aprovações para seguir com o merge
-- PRs que envolvam back e front pelo menos 4 aprovações para seguir com o merge, sendo 2 de back-end e 2 de front-end
-- PRs que contenham inserção, alteração ou remoção de testes automatizados pelo menos 1 aprovação de QA para seguir com o merge.
+- `.` só é permitido na versão de release (por exemplo, `release/v1.2.0`)
 
 | Prefixo | Padrão | PR aberto contra |
 |---|---|---|
-| `featur` | `featur/ISSUE[-descricao]` | `main` |
+| `feature` | `feature/ISSUE[-descricao]` | `main` |
 | `bugfix` | `bugfix/ISSUE[-descricao]` | `main`, ou a release no caso de hotfix |
-| `experi` | `experi/ISSUE[-descricao]` | `main` (experimento) ou *Draft* até o fim (PoC) |
+| `hotfix` | `hotfix/ISSUE[-descricao]` | `main` ou a release |
+| `chore` | `chore/ISSUE[-descricao]` | `main` |
+| `experiment` | `experiment/ISSUE[-descricao]` | `main` |
 | `devops` | `devops/ISSUE[-descricao]` | `main` |
 | `toggle` | `toggle/ISSUE[-descricao]` | `main` |
-| `releas` | `releas/vMAJOR.MINOR.PATCH` | n/a (criada pela pipeline; a única criação manual permitida é a release de hotfix, veja [Hotfix](#hotfix)) |
+| `release` | `release/vMAJOR.MINOR[.PATCH]` | n/a (criada pela pipeline; a única criação manual permitida é a release de hotfix, veja [Hotfix](#hotfix)) |
 
-Nomes sem `/`, sem a chave do Jira ou com prefixos fora da tabela não seguem o padrão.
+Nomes fora dos formatos da tabela não seguem o padrão, exceto as branches da seção [Exceções](#exceções).
 
 #### Exceções
 
@@ -148,8 +153,9 @@ Nomes sem `/`, sem a chave do Jira ou com prefixos fora da tabela não seguem o 
 | `main` | Branch troncal, sem prefixo |
 | `dependabot/*`, `renovate/*` | Criadas por bots de dependência |
 | `copilot/*` | Criada automaticamente pelo GitHub Copilot coding agent, sem opção de configurar o nome |
+| `ai/*`, `claude/*`, `codex/*`, `cursor/*` | Prefixos de branches de agentes de IA aceitos pelo Conventional Branch |
 
-**Agentes de IA** que permitem escolher o nome da branch (Claude Code, Cursor, Copilot no editor etc.) seguem o padrão `tipo/ISSUE[-descricao]`. Não usamos prefixos como `claude/`, `cursor/` ou `ai/`. Para identificar trabalho feito por IA, use a tag `ai-generated` no PR. Configure o agente via `CLAUDE.md` / `.github/copilot-instructions.md`.
+Para identificar trabalho feito por IA, use a tag `ai-generated` no PR. Agentes que permitem escolher o nome da branch devem seguir o padrão `tipo/ISSUE[-descricao]`. Configure o agente via `CLAUDE.md` / `.github/copilot-instructions.md`.
 
 Nos PRs vindos de `copilot/*`, o título do PR continua obrigatoriamente no padrão `[ISSUE] (tipo) Mensagem`. Ajuste o título antes de pedir review.
 
@@ -158,16 +164,16 @@ Nos PRs vindos de `copilot/*`, o título do PR continua obrigatoriamente no padr
 O nome da branch e o título do PR são validados no CI. Fora do padrão, o PR não é aceito.
 
 ```
-Branch:   ^(featur|bugfix|experi|devops|toggle)/[A-Z][A-Z0-9]+-[0-9]+(-[a-z0-9]+)*$
-Release:  ^releas/v[0-9]+\.[0-9]+\.[0-9]+$
-Exceções: ^(main|dependabot/.+|renovate/.+|copilot/.+)$
-Título:   ^\[[A-Z][A-Z0-9]+-[0-9]+\] \((featur|bugfix|experi|devops|toggle)\) .+$
+Branch:   ^(feature|bugfix|hotfix|chore|experiment|devops|toggle)/[A-Z][A-Z0-9]+-[0-9]+(-[a-z0-9]+)*$
+Release:  ^release/v[0-9]+\.[0-9]+(\.[0-9]+)?$
+Exceções: ^(main|dependabot/.+|renovate/.+|ai/.+|claude/.+|codex/.+|copilot/.+|cursor/.+)$
+Título:   ^\[[A-Z][A-Z0-9]+-[0-9]+\] \((feature|bugfix|experiment|devops|toggle)\) .+$
 ```
 
 #### Hotfix
 
-1. Crie `releas/v1.X.1` a partir da release que está em produção (ou da desejada)
-2. A partir dela, crie `bugfix/ISSUE` e abra o PR contra essa release
+1. Crie `release/vMAJOR.MINOR.PATCH` (por exemplo, `release/v1.2.0`) a partir da release que está em produção (ou da desejada)
+2. A partir dela, crie `bugfix/ISSUE` (por exemplo, `bugfix/CPT-600`) e abra o PR contra essa release
 3. Atualize o changelog manualmente, para que tenhamos o rastreamento de entrada do hotfix
 4. Abra PRs em cascata para as demais releases fechadas e para a `main`, para que as próximas versões incorporem o hotfix
 
@@ -181,7 +187,7 @@ Não usamos branches `temp/` nem `tmp/`. Todo trabalho em andamento, teste ou te
 
 #### PoC
 
-O PR de uma PoC (`experi/ISSUE`) permanece como *Draft* durante toda a sua vida e nunca é mergeado. Ele serve para revisão, discussão e registro do que foi aprendido. Ao fim da PoC, feche o PR (registrando a conclusão na descrição ou em um comentário) e remova a branch. Se a PoC for aprovada para ir adiante, abra um novo PR com o tipo adequado (`featur`, `toggle`, etc.) a partir de uma nova branch.
+O PR de uma PoC (`experiment/ISSUE`) permanece como *Draft* durante toda a sua vida e nunca é mergeado. Ele serve para revisão, discussão e registro do que foi aprendido. Ao fim da PoC, feche o PR (registrando a conclusão na descrição ou em um comentário) e remova a branch. Se a PoC for aprovada para seguir adiante, abra um novo PR com o tipo adequado (`feature`, `toggle` etc.) a partir de uma nova branch.
 
 ### Tags
 
@@ -189,6 +195,7 @@ O PR de uma PoC (`experi/ISSUE`) permanece como *Draft* durante toda a sua vida 
 - Se o PR foi feito com ajuda de um agente de IA, adicione a tag `ai-generated`
 - Se o autor abriu um PR com os checks passando e pronto para review, adicione a tag `ready to review`
 - Se o PR foi aprovado pelo número necessário de pessoas e está pronto para ser mergeado, adicione a tag `ready to merge`
+- Informe qual VS pertence aquele PR. Por exemplo: `vsOperador`
 
 
 ## Convenções de nomes de arquivos
@@ -200,7 +207,7 @@ O PR de uma PoC (`experi/ISSUE`) permanece como *Draft* durante toda a sua vida 
 | **camelCase** | `pullRequestTemplate.md` | Alguns arquivos JS/TS (hooks, utils, stores). Raro como padrão geral | `useAuth.ts`, `formatDate.js`, `authStore.ts`, `apiClient.js` |
 | **PascalCase** | `PullRequestTemplate.vue` | Componentes Vue/React, classes Java/C#/Kotlin/Swift | `UserCard.vue`, `LoginForm.tsx`, `UserService.java`, `LoginPage.ts` (Page Object), `Program.cs` |
 | **UPPER_CASE** | `README.md` | Arquivos "meta" do repositório e arquivos exigidos por ferramentas | `README.md`, `CONTRIBUTING.md`, `CHANGELOG.md`, `LICENSE`, `CODEOWNERS`, `.github/PULL_REQUEST_TEMPLATE.md` |
-| **Nome fixo** | `Dockerfile` | Arquivos que a ferramenta procura pelo nome exato | `Dockerfile`, `Makefile`, `Gemfile`, `Rakefile`, `package.json`, `.gitlab-ci.yml`, `playwright.config.ts`, `cypress.config.js` |
+| **Nome fixo** | `Dockerfile` | Arquivos que a ferramenta procura pelo nome exato | `Dockerfile`, `Makefile`, `Gemfile`, `Rakefile`, `package.json`, `playwright.config.ts`, `cypress.config.js` |
 
 > **Observação sobre `.github/`:** o GitHub aceita `pull_request_template.md` e `PULL_REQUEST_TEMPLATE.md` (não diferencia maiúsculas e minúsculas), mas **não** reconhece kebab-case nem camelCase. Os arquivos de workflow em `.github/workflows/` costumam usar kebab-case (`ci.yml`, `deploy-staging.yml`).
 
