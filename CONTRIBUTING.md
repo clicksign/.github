@@ -125,6 +125,13 @@ Exemplos: `feature/QE-785`, `feature/CPT-600-cpf-validation`, `feature/CPT-600-s
 
 > **Desvios intencionais do [Conventional Branch](https://conventionalbranch.org/) (v1.1.0):** `devops`, `experiment` e `toggle` são extensões próprias. A chave do Jira na branch fica em maiúsculas para a integração GitHub ↔ Jira vincular a branch à issue, embora o padrão aceite apenas letras minúsculas nos nomes de branch. Os tipos do título do PR são uma convenção interna independente.
 
+#### Convenção de commits
+- Commits em pt-BR
+- Commits no imperativo e presente
+- Capitalizar primeiro caractere
+- Manter commit coerente ao contexto do bloco commitado
+- Manter boa descrição dos commits
+
 #### Regras de caracteres
 
 - Apenas letras, números, `-` e `/` (um único `/`, separando tipo e restante)
