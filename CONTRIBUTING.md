@@ -174,7 +174,7 @@ O nome da branch e o título do PR são validados no CI. Fora do padrão, o PR n
 Branch:   ^(feature|bugfix|hotfix|chore|experiment|devops|toggle)/[A-Z][A-Z0-9]+-[0-9]+(-[a-z0-9]+)*$
 Release:  ^release/v[0-9]+\.[0-9]+(\.[0-9]+)?$
 Exceções: ^(main|dependabot/.+|renovate/.+|ai/.+|claude/.+|codex/.+|copilot/.+|cursor/.+)$
-Título:   ^\[[A-Z][A-Z0-9]+-[0-9]+\] \((feature|bugfix|experiment|devops|toggle)\) .+$
+Título:   ^\[[A-Z][A-Z0-9]+-[0-9]+\] \((feature|bugfix|hotfix|chore|experiment|devops|toggle)\) .+$
 ```
 
 #### Hotfix
