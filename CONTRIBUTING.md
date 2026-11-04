@@ -188,7 +188,7 @@ Não usamos branches `temp/` nem `tmp/`. Todo trabalho em andamento, teste ou te
 
 Experimentos e PoCs usam o prefixo `feature`, no formato `feature/ISSUE[-descricao]` e com o tipo `(feature)` no título do PR.
 
-O PR de uma PoC permanece como *Draft*. Ele serve para revisão, discussão e registro do que foi aprendido. Ao fim da PoC, feche o PR (registrando a conclusão na descrição ou em um comentário) e remova a branch. Se a PoC for aprovada para seguir adiante, adicione a label *PoC*.
+O PR de uma PoC permanece como *Draft*. Ele serve para revisão, discussão e registro do que foi aprendido. Ao fim da PoC, feche o PR (registrando a conclusão na descrição ou em um comentário) e remova a branch. Se a PoC for aprovada para seguir adiante, adicione a label `poc`.
 
 ### Labels
 
