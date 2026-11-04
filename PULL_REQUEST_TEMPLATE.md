@@ -1,24 +1,28 @@
 ### Descrição
 
-<frase de abertura: 1–2 linhas resumindo o objetivo do PR e o problema que ele resolve>
+<!-- 1–2 linhas resumindo o objetivo do PR e o problema que ele resolve. -->
 
 #### O que foi alterado
 
-- **<Área 1>**: <o que mudou nessa camada>
-- **<Área 2>**: <o que mudou nessa camada>
+<!-- Liste as mudanças por área ou camada. Ex.:
+     - **API**: novo endpoint de validação de CPF
+     - **Front-end**: mensagem de erro no formulário de assinatura -->
+
+- 
 
 #### Por que
 
-<motivação, dor, contexto de negócio>
+<!-- Motivação, dor e contexto de negócio. -->
 
 #### Como
 
-<fluxo da implementação, decisões técnicas, trade-offs>
+<!-- Fluxo da implementação, decisões técnicas e trade-offs. -->
 
 #### Antes / Depois
 
 <!-- Incluir APENAS quando houver mudança de payload, contrato de API, estado, enum ou rota.
-     Omitir completamente nos demais casos. -->
+     Remova esta seção inteira nos demais casos. 
+-->
 
 **Antes**
 ```json
@@ -34,8 +38,11 @@
 
 ### Testes
 
-- **O que foi testado**: <cenários validados, incluindo casos de borda e negativos>
-- **Tipos de testes no PR**: <unitário, integração, request/e2e, etc.>
+<!-- Cenários validados (incluindo casos de borda e negativos) e tipos de testes presentes no PR
+     (unitário, integração, request/e2e etc.). -->
+
+- **O que foi testado**: 
+- **Tipos de testes no PR**: 
 
 ---
 
@@ -46,24 +53,16 @@
 
 ---
 
-### Issue tracker
+### Issue no Jira
+
+<!-- Substitua {JIRA-CODE} pela chave da issue. Ex.: CPT-600 -->
 
 [Link para o card no Jira.](https://clicksign.atlassian.net/browse/{JIRA-CODE})
 
 ---
 
-### Code Review
+### Revisão de código
 
-Como fazer o Code Review: [CONTRIBUTING.md](https://github.com/clicksign/.github/blob/main/CONTRIBUTING.md)
+> [!WARNING]
+> Revisão de código: [CONTRIBUTING.md](https://github.com/clicksign/.github/blob/main/CONTRIBUTING.md#code-review).
 
----
-
-### Checklist para poder mergear
-
-- [ ] O título segue o padrão `[ISSUE] (tipo) Mensagem`
-- [ ] O código do PR inclui (ou já possui) testes para o código nele
-- [ ] Nomes de arquivos seguem a [convenção do repositório](../CONTRIBUTING.md#convenção-de-nomes-de-arquivos)
-- [ ] Os checks de linters estão passando
-- [ ] Os checks de testes estão passando
-- [ ] Evidências anexadas (quando houver mudança visível)
-- [ ] Descrição ou código gerado com IA (se marcado, adicionar a tag `ai-generated`)

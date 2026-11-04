@@ -86,7 +86,7 @@ Use sempre `feature` (e não o alias `feat`) para novas funcionalidades e `fix` 
 
 Experimentos e PoCs também usam o prefixo `feature` (veja [PoC](#poc)).
 
-O uso de IA não define prefixo. Branches criadas por agentes de IA usam o prefixo normal do trabalho (por exemplo, `feature`), e o PR é identificado pela tag `ai-generated` (veja [Tags](#tags)).
+O uso de IA não define prefixo. Branches criadas por agentes de IA usam o prefixo normal do trabalho (por exemplo, `feature`), e o PR é identificado pela label `ai-generated` (veja [Labels](#labels)).
 
 #### Qual tipo de PR usar quando não é óbvio
 
@@ -96,7 +96,7 @@ O uso de IA não define prefixo. Branches criadas por agentes de IA usam o prefi
 | Apenas testes ou documentação | `feature` |
 | Upgrade de dependência | `devops` |
 | Manutenção sem mudança funcional | `devops` |
-| Remoção de feature toggle | `feature` (com a tag `toggle`) |
+| Remoção de feature toggle | `feature` (com a label `toggle`) |
 | Hotfix em produção | `fix` (contra a release) |
 
 ### Título do PR
@@ -188,23 +188,23 @@ Não usamos branches `temp/` nem `tmp/`. Todo trabalho em andamento, teste ou te
 
 Experimentos e PoCs usam o prefixo `feature`, no formato `feature/ISSUE[-descricao]` e com o tipo `(feature)` no título do PR.
 
-O PR de uma PoC permanece como *Draft* durante toda a sua vida e nunca é mergeado. Ele serve para revisão, discussão e registro do que foi aprendido. Ao fim da PoC, feche o PR (registrando a conclusão na descrição ou em um comentário) e remova a branch. Se a PoC for aprovada para seguir adiante, abra um novo PR com o tipo adequado (`feature`, `fix` etc.) a partir de uma nova branch.
+O PR de uma PoC permanece como *Draft*. Ele serve para revisão, discussão e registro do que foi aprendido. Ao fim da PoC, feche o PR (registrando a conclusão na descrição ou em um comentário) e remova a branch. Se a PoC for aprovada para seguir adiante, adicione a label *PoC*.
 
-### Tags
+### Labels
 
-Tags (labels) **categorizam** o PR para facilitar filtros e buscas. Elas **não são gatilho** de automações nem indicam o status do PR: os disparos usam os eventos nativos do GitHub, como a saída de *Draft* (*Ready for review*) e a mudança de branch base, e o status vem do próprio estado do PR (Draft, aprovações, checks).
+Labels **categorizam** o PR para facilitar filtros e buscas. Elas **não são gatilho** de automações nem indicam o status do PR: os disparos usam os eventos nativos do GitHub, como a saída de *Draft* (*Ready for review*) e a mudança de branch base, e o status vem do próprio estado do PR (Draft, aprovações, checks).
 
 #### Formato
 
 - Sempre em **kebab-case**: minúsculas, palavras separadas por hífen
 - Sem espaços, acentos, `ç`, dois-pontos (`:`), `~` ou outros caracteres especiais, que já causaram erro no CI
-- Tags de um mesmo grupo compartilham um prefixo comum, para ficarem agrupadas na ordem alfabética
+- Labels de um mesmo grupo compartilham um prefixo comum, para ficarem agrupadas na ordem alfabética
 
 Exemplo: `team-ativacao` em vez de `team: VS ativação`.
 
-#### Tags usadas
+#### Labels usadas
 
-| Tag | Quando usar |
+| Label | Quando usar |
 |---|---|
 | `front-end` | O PR altera front-end |
 | `back-end` | O PR altera back-end |
@@ -212,8 +212,8 @@ Exemplo: `team-ativacao` em vez de `team: VS ativação`.
 | `toggle` | O PR habilita, altera ou remove feature toggles |
 | `ai-generated` | O PR foi feito com ajuda de um agente de IA |
 
-- PRs híbridos levam as duas tags, `front-end` e `back-end`. Não existe tag `full-stack`
-- A tag de time usa um nome genérico (`team-`), e não o nome da VS ou do squad, que pode mudar
+- PRs híbridos levam as duas labels, `front-end` e `back-end`. Não existe label `full-stack`
+- A label de time usa um nome genérico (`team-`), e não o nome da VS ou do squad, que pode mudar
 
 ## Convenções de nomes de arquivos
 
