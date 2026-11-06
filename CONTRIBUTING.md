@@ -73,7 +73,7 @@ Existem exceções, como alterações em vários arquivos ao mesmo tempo para co
 
 ### Prefixos de branch
 
-O [Conventional Branch](https://conventionalbranch.org/) (v1.1.0) define os prefixos `feature`, `bugfix`, `hotfix` e `release`, entre outros, e prevê `fix` como alias de `bugfix`. Usamos apenas `feature`, `fix` e `release` do padrão, mais `devops` como extensão própria.
+O [Conventional Branch](https://conventionalbranch.org/) (v1.1.0) define os prefixos `feature`, `bugfix`, `hotfix` e `release`, entre outros, e prevê `fix` como alias de `bugfix`. Usamos apenas `feature`, `fix` e `release` do padrão.
 
 Use sempre `feature` (e não o alias `feat`) para novas funcionalidades e `fix` para qualquer correção.
 
@@ -81,7 +81,6 @@ Use sempre `feature` (e não o alias `feat`) para novas funcionalidades e `fix` 
 |---|---|
 | `feature` | Nova funcionalidade, inclusive quando habilitada ou removida via feature toggle |
 | `fix` | Correção de bug: planejada, sustentação ou urgente (une os antigos `bugfix` e `hotfix`) |
-| `devops` | Infra, pipelines, automações e manutenção sem mudança funcional (absorve o antigo `chore`; extensão própria) |
 | `release` | Release criada pela pipeline (a única criação manual permitida é para hotfix) |
 
 Experimentos e PoCs também usam o prefixo `feature` (veja [PoC](#poc)).
@@ -94,8 +93,8 @@ O uso de IA não define prefixo. Branches criadas por agentes de IA usam o prefi
 |---|---|
 | Refatoração sem mudança de comportamento | `feature` |
 | Apenas testes ou documentação | `feature` |
-| Upgrade de dependência | `devops` |
-| Manutenção sem mudança funcional | `devops` |
+| Upgrade de dependência | `feature` |
+| Infra, pipelines, automações e manutenção sem mudança funcional | `feature` |
 | Remoção de feature toggle | `feature` (com a label `toggle`) |
 | Hotfix em produção | `fix` (contra a release) |
 
@@ -123,7 +122,7 @@ Formato: `tipo/ISSUE[-descricao]`
 
 Exemplos: `feature/QE-785`, `feature/CPT-600-cpf-validation`, `fix/CPT-600-signed-pades`
 
-> **Desvios intencionais do [Conventional Branch](https://conventionalbranch.org/) (v1.1.0):** `devops` é extensão própria. A chave do Jira na branch fica em maiúsculas para a integração GitHub ↔ Jira vincular a branch à issue, embora o padrão aceite apenas letras minúsculas nos nomes de branch. Os tipos do título do PR são uma convenção interna independente.
+> **Desvios intencionais do [Conventional Branch](https://conventionalbranch.org/) (v1.1.0):** A chave do Jira na branch fica em maiúsculas para a integração GitHub ↔ Jira vincular a branch à issue, embora o padrão aceite apenas letras minúsculas nos nomes de branch. Os tipos do título do PR são uma convenção interna independente.
 
 #### Convenção de commits
 
@@ -145,7 +144,6 @@ Exemplos: `feature/QE-785`, `feature/CPT-600-cpf-validation`, `fix/CPT-600-signe
 |---|---|---|
 | `feature` | `feature/ISSUE[-descricao]` | `main` |
 | `fix` | `fix/ISSUE[-descricao]` | `main`, ou a release no caso de hotfix |
-| `devops` | `devops/ISSUE[-descricao]` | `main` |
 | `release` | `release/vMAJOR.MINOR[.PATCH]` | n/a (criada pela pipeline) |
 
 Nomes fora dos formatos da tabela não seguem o padrão, exceto as branches da seção [Exceções](#exceções).
@@ -164,10 +162,10 @@ Agentes de IA devem seguir o padrão `tipo/ISSUE[-descricao]`. Configure o agent
 O nome da branch e o título do PR são validados no CI. Fora do padrão, o PR não é aceito.
 
 ```
-Branch:   ^(feature|fix|devops)/[A-Z][A-Z0-9]+-[0-9]+(-[a-z0-9]+)*$
+Branch:   ^(feature|fix)/[A-Z][A-Z0-9]+-[0-9]+(-[a-z0-9]+)*$
 Release:  ^release/v[0-9]+\.[0-9]+(\.[0-9]+)?$
 Exceções: ^(main|dependabot/.+)$
-Título:   ^\[[A-Z][A-Z0-9]+-[0-9]+\] \((feature|fix|devops)\) .+$
+Título:   ^\[[A-Z][A-Z0-9]+-[0-9]+\] \((feature|fix)\) .+$
 ```
 
 #### Hotfix
