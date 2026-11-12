@@ -1,34 +1,68 @@
-### Importante
-Caso precise isolar o **pr** em uma release separada, favor incluir no titulo do PR a informação [rls_isolada]
-ex:  [ARCH-123][**rls_isolada**]Atualização de Excalibur
-
 ### Descrição
 
-\[Descreva o problema ou card resumidamente. Depois descreva a solução técnica para esse problema, focando no *como* e no *por que* a sua solução foi feita dessa forma. A ideia é ajudar o revisor do código a entendê-lo de forma geral e poder analisar o código já com algum contexto.\]
+<!-- 1–2 linhas resumindo o objetivo do PR e o problema que ele resolve. -->
 
-### Issue tracker
+#### O que foi alterado
 
-\[Link para o card no Jira.\]
+<!-- Liste as mudanças por área ou camada. Ex.:
+     - **API**: novo endpoint de validação de CPF
+     - **Front-end**: mensagem de erro no formulário de assinatura -->
 
-### Code Review
+- 
 
-Como fazer o Code Review:
+#### Por que
 
-[CONTRIBUTING.md](https://github.com/clicksign/.github/blob/8d623c886c2da0266d108d5fa21cf01a1c82cbc0/CONTRIBUTING.md)
+<!-- Motivação, dor e contexto de negócio. -->
 
-### Screenshots (para mudanças de UI, se houver)
+#### Como
 
-\[Adicione alguns screenshots das mudanças de UI inclusas no seu PR, se houver. Isso ajuda o revisor a entender como o usuário utilizaria o código do PR.\]
+<!-- Fluxo da implementação, decisões técnicas e trade-offs. -->
 
-### Links e observações
+#### Antes / Depois
 
-\[Links úteis que podem contextualizar e ajudar o revisor, por exemplo para a página de uma dependência que escolheu adicionar, ou um código que se inspirou, ou documentação externa (docs de uma API, do Vue, do Rails, etc).\]
+<!-- Incluir APENAS quando houver mudança de payload, contrato de API, estado, enum ou rota.
+     Remova esta seção inteira nos demais casos. 
+-->
 
-- Dúvidas sobre isolar pr consulte - https://clicksign.atlassian.net/wiki/spaces/KBTech/pages/765952001/Classificar+Release+Isolada
+**Antes**
+```json
+...
+```
 
+**Depois**
+```json
+...
+```
 
-### Checklist para poder mergear
+---
 
-- [ ] O código do PR inclui (ou já possui) testes para o código nele
-- [ ] Os checks de linters estão passando
-- [ ] Os checks de testes estão passando
+### Testes
+
+<!-- Cenários validados (incluindo casos de borda e negativos) e tipos de testes presentes no PR
+     (unitário, integração, request/e2e etc.). -->
+
+- **O que foi testado**: 
+- **Tipos de testes no PR**: 
+
+---
+
+### Evidências
+
+<!-- Anexe aqui um print ou GIF da correção/funcionalidade funcionando.
+     Para mudanças sem impacto visual, cole a saída relevante (log, resposta da API, execução dos testes). -->
+
+---
+
+### Issue no Jira
+
+<!-- Substitua {JIRA-CODE} pela chave da issue. Ex.: CPT-600 -->
+
+[Link para o card no Jira.](https://clicksign.atlassian.net/browse/{JIRA-CODE})
+
+---
+
+### Revisão de código
+
+> [!WARNING]
+> Revisão de código: [CONTRIBUTING.md](https://github.com/clicksign/.github/blob/main/CONTRIBUTING.md#code-review).
+
