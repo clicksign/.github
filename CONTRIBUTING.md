@@ -51,6 +51,8 @@ Exemplo: um PR com 250 linhas alteradas em 22 arquivos é **Crítico**, porque o
 
 Existem exceções, como alterações em vários arquivos ao mesmo tempo para corrigir um problema de estilo. Nesses casos, explique na descrição do PR. Em geral, PRs nos níveis Alerta e Crítico devem ser raros.
 
+Arquivos lock de dependências (`yarn.lock`, `pnpm-lock.yaml`, `Gemfile.lock`, `package-lock.json`, `go.sum` e similares) não contam nestes limites. Eles são gerados automaticamente pelo gerenciador de pacotes e refletem apenas atualizações de dependências, não alterações reais de código. A mudança no manifesto correspondente (`package.json`, `Gemfile`, `go.mod` etc.) continua contando e deve ser revisada.
+
 ### Regras
 
 - PRs são abertos com base na `main`. A única exceção são os hotfixes, que seguem o fluxo de release (veja [Hotfix](#hotfix))
